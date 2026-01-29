@@ -105,7 +105,7 @@ def run_mixability(current: pd.Series, candidate: pd.Series) -> float:
 
 
 def main():
-    popular = pd.read_csv("popular_songs.csv")
+    popular = pd.read_csv("data/popular_songs.csv")
     df = clean_data(popular)
     
     song_1 = df.loc[1]
