@@ -43,7 +43,7 @@ def run_mixability_scores(current: pd.Series, df: pd.DataFrame, played: pd.DataF
 
 
 def main():
-    popular_songs = pd.read_csv("popular_songs.csv")
+    popular_songs = pd.read_csv("data/popular_songs.csv")
     cleaned = clean_data(popular_songs).iloc[:10]
     played = pd.DataFrame(columns=cleaned.columns)
 
