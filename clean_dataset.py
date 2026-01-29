@@ -31,7 +31,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    popular_songs = pd.read_csv("popular_songs.csv")
+    popular_songs = pd.read_csv("data/popular_songs.csv")
     cleaned = clean_data(popular_songs)
     print(cleaned.head(5))
 
