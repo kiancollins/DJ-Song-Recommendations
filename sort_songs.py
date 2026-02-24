@@ -15,7 +15,7 @@ def run_mixability_scores(current: pd.Series, df: pd.DataFrame, played: pd.DataF
         avoids fully removing the song from our list
         """
     new = df.copy()
-    new["mixability"] = 0.0 # Create copy of DataFrame, and insert a new column
+    # new["mixability"] = 0.0 # Create copy of DataFrame, and insert a new column
 
     
     mask = ((new["track"] == current["track"]) &
@@ -31,9 +31,10 @@ def run_mixability_scores(current: pd.Series, df: pd.DataFrame, played: pd.DataF
     
     result = result.sort_values("mixability", ascending=False)  # Sort by mixability
 
-    current = current.drop("mixability", errors="ignore")                   # Remove mixability score if it has one
-    played = pd.concat([played, current.to_frame().T], ignore_index=True)   # Add to our df of played songs
-
+    print(f"current: {current}")
+    # current = current.drop("mixability", errors="ignore")                   # Remove mixability score if it has one
+    played = pd.concat([current.to_frame().T, played], ignore_index=True)   # Inster to the top of our played songs df
+    print(f"played: {played}")
     
     return result, played
 
