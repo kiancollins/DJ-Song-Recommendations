@@ -20,12 +20,15 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
                                "energy", "track_popularity", "danceability", "liveness"]]
     df = df.rename(columns={"track_name": "track", "track_artist": "artist",
                                               "playlist_genre": "genre", "track_popularity": "popularity"})
+    df.index.name = "id"
 
     df["popularity"] *= 0.01
+    df["popularity"] = df["popularity"].astype(float).round(2)
     df["danceability"] = df["danceability"].round(2)
     df["liveness"] = df["liveness"].round(2)
     df["energy"] = df["energy"].round(2)
     df["tempo"] = df["tempo"].round()
+    df["mixability"] = 0.0
     # print(df)
     return df
 
